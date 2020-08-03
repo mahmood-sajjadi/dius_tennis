@@ -3,14 +3,19 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
+    "checkyarn": "echo \"$npm_execpath\" | grep -q \"yarn\\.js$\" || (echo '⚠️  Use yarn not npm!  ⚠️' && echo && exit 1)",
+    "preinstall": "$npm_execpath --silent run checkyarn",
     "build": "tsc -p .",
-    "lint": "",
-    "test": "jest"
+    "lint": "eslint --ext .js,.ts src/ --color",
+    "test": "jest --watch"
   },
   "devDependencies": {
+    "@types/jest": "^26.0.8",
+    "@typescript-eslint/eslint-plugin": "^3.7.1",
+    "@typescript-eslint/parser": "^3.7.1",
+    "eslint": "^7.6.0",
     "jest": "^26.2.2",
-    "nodemon": "^2.0.4",
+    "ts-jest": "^26.1.4",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.7"
   }

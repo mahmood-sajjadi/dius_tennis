@@ -1,0 +1,57 @@
+{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "env": {
+        "browser": true
+    },
+    "globals": {
+        "H": true,
+        "mapsjs": true
+    },
+    "settings": {
+        "import/extentions": [
+            ".ts",
+            ".js",
+        ],
+        "import/parsers": {
+            "@typescript-eslint/parser": [
+                ".ts",
+            ]
+        },
+        "import/resolver": {
+            "node": {
+                "paths": [
+                    "src",
+                ],
+                "extensions": [".ts", ".js", ".mjs"]
+            }
+        }
+    },
+    "overrides": [
+        {
+            "files": ["**/*.js"],
+            "rules": {
+                "@typescript-eslint/no-empty-function": 0,
+                "@typescript-eslint/camelcase": 0,
+                "@typescript-eslint/no-var-requires": 0,
+                "@typescript-eslint/explicit-function-return-type": 0
+            }
+        },
+        {
+            "files": ["**/*.ts"],
+            "rules": {
+                "no-unused-expressions": "off"
+            }
+        },
+        {
+            "files": ["**/*.spec.*"],
+            "env": {
+                "jest": true
+            },
+        }
+    ]
+}

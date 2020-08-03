@@ -7,7 +7,8 @@
     "preinstall": "$npm_execpath --silent run checkyarn",
     "build": "tsc -p .",
     "lint": "eslint --ext .js,.ts src/ --color",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand --watch"
   },
   "devDependencies": {
     "@types/jest": "^26.0.8",

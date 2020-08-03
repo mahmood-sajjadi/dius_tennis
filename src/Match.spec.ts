@@ -97,7 +97,7 @@ describe('Match rules', () => {
     for (let t = 0; t < tests2.length; t++) {
       const values = tests2[t];
       test(`WHEN they get equal ${values} points and player ${player} get 2 more points THEN player ${player} win then game`, () => {
-        for(let i = 0; i < values[0]; i++) {
+        for(let i = 0; i < values; i++) {
           match.pointWonBy(players[player - 1]);
           match.pointWonBy(players[otherPlayer - 1]);
         }
@@ -135,7 +135,7 @@ describe('Match rules', () => {
     const test4 = [4, 5];
     for (let t = 0; t < test4.length; t++) {
       const values = test4[t];
-      test(`WHEN players win equal ${values[1]} games and after that player ${player} win 2 more games THEN playr ${player} is winner of the set`, () => {
+      test(`WHEN players win equal ${values} games and after that player ${player} win 2 more games THEN playr ${player} is winner of the set`, () => {
         for(let j = 0; j < values; j++) {
           match.pointWonBy(players[otherPlayer - 1]);
           match.pointWonBy(players[otherPlayer - 1]);

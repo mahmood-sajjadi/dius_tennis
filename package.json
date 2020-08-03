@@ -1,0 +1,17 @@
+{
+  "name": "dius_tennis",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
+    "build": "tsc -p .",
+    "lint": "",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^26.2.2",
+    "nodemon": "^2.0.4",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.7"
+  }
+}

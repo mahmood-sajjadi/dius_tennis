@@ -14,22 +14,12 @@
     },
     "settings": {
         "import/extentions": [
-            ".ts",
-            ".js",
         ],
         "import/parsers": {
             "@typescript-eslint/parser": [
                 ".ts",
             ]
         },
-        "import/resolver": {
-            "node": {
-                "paths": [
-                    "src",
-                ],
-                "extensions": [".ts", ".js", ".mjs"]
-            }
-        }
     },
     "overrides": [
         {

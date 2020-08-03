@@ -27,7 +27,7 @@ export default class Match implements MatchInterface {
         const index = this.getIndex(player);
         this.gameScore[index]++;
         const winner = this.scoreSystem.getWinner(this.gameScore);
-        if (winner) {
+        if (winner !== undefined) {
             this.gameScore = [0, 0];
             this.setScore[winner]++;
             if (this.setScore.every(x => x === 6)) {

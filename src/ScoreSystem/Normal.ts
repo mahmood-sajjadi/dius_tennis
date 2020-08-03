@@ -7,6 +7,9 @@ export default class NormalScoreSystem implements ScoreSystem {
     }
 
     toString(score: [number, number]): string {
+        if (score.every(x => x === 0)) {
+            return '';
+        }
         if (score.every(v => v >= 3)) {
             if (score[0] === score[1]) {
                 return 'Deuce';

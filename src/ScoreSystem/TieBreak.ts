@@ -2,6 +2,9 @@ import ScoreSystem from './ScoreSystem';
 
 export default class TieBreakScoreSystem implements ScoreSystem {
     toString(score: [number, number]): string {
+        if (score.every(x => x === 0)) {
+            return '';
+        }
         return score.join('-');
     }
 

@@ -39,6 +39,15 @@ export default class Match implements MatchInterface {
     public score(): string {
         const set = this.setScore.join('-');
         const game = this.scoreSystem.toString(this.gameScore);
+        if (
+            // normal game winner
+            (Math.max(...this.setScore) === 6 && Math.abs(this.setScore[0] - this.setScore[1]) >= 2)
+            // tie-break winner
+            || Math.max(...this.setScore) > 6
+         ) {
+            const winner = this.setScore[0] > this.setScore[1] ? this.player1 : this.player2;
+            return `${winner} is winner`;
+        }
         return `${set}${game ? ', ' : ''}${game}`;
     }
 }

@@ -4,6 +4,7 @@ import {
     NormalScoreSystem,
     TieBreakcoreSystem
 } from './ScoreSystem';
+import config from './config';
 
 export default class Match implements MatchInterface {
     private setScore: [number, number] = [0, 0];
@@ -30,7 +31,7 @@ export default class Match implements MatchInterface {
         if (winner !== undefined) {
             this.gameScore = [0, 0];
             this.setScore[winner]++;
-            if (this.setScore.every(x => x === 6)) {
+            if (this.setScore.every(x => x === config.setScoreToTieBrak)) {
                 this.scoreSystem = new TieBreakcoreSystem();
             }
         }
@@ -41,9 +42,9 @@ export default class Match implements MatchInterface {
         const game = this.scoreSystem.toString(this.gameScore);
         if (
             // normal game winner
-            (Math.max(...this.setScore) === 6 && Math.abs(this.setScore[0] - this.setScore[1]) >= 2)
+            (Math.max(...this.setScore) === config.minScoreToWinSet && Math.abs(this.setScore[0] - this.setScore[1]) >= config.minDiffToWinSet)
             // tie-break winner or 7-5, who ever reach 7 is the winner
-            || Math.max(...this.setScore) > 6
+            || Math.max(...this.setScore) >= config.setScoreToWin
          ) {
             const winner = this.setScore[0] > this.setScore[1] ? this.player1 : this.player2;
             return `${winner} is winner`;

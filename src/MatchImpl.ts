@@ -42,7 +42,7 @@ export default class Match implements MatchInterface {
         if (
             // normal game winner
             (Math.max(...this.setScore) === 6 && Math.abs(this.setScore[0] - this.setScore[1]) >= 2)
-            // tie-break winner
+            // tie-break winner or 7-5, who ever reach 7 is the winner
             || Math.max(...this.setScore) > 6
          ) {
             const winner = this.setScore[0] > this.setScore[1] ? this.player1 : this.player2;

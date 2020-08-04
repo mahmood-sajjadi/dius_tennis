@@ -61,11 +61,12 @@ describe('Match rules', () => {
     expect(match.score()).toBe("0-0, Deuce");
   });
 
+  // logic for player 1 or player 2 should be equal
   for (let player = 1; player <= 2; player ++) {
     const otherPlayer = Math.floor(player % 2) + 1;
 
     for (let t = 3; t < 10; t++) {
-      test(`WHEN player ${otherPlayer} get ${3} point and player ${player} one extra point THEN Advantage player ${player}`, () => {
+      test(`WHEN player ${otherPlayer} get ${t} point and player ${player} one extra point THEN Advantage player ${player}`, () => {
         for (let i = 0; i < t; i++) {
           match.pointWonBy(players[player - 1]);
           match.pointWonBy(players[otherPlayer - 1]);
@@ -76,6 +77,7 @@ describe('Match rules', () => {
       });
     }
 
+    // minimum 4 games and diff is more than 2 to win
     const tests1 = [[4, 0], [4, 1], [4, 2], [5, 3]];
     for (let t = 0; t < tests1.length; t++) {
       const values = tests1[t];
@@ -93,6 +95,7 @@ describe('Match rules', () => {
       });
     }
 
+    // just 2 more points to win and minimum 4, so other player minimum 2
     const tests2 = [2, 3, 4, 5];
     for (let t = 0; t < tests2.length; t++) {
       const values = tests2[t];
@@ -111,6 +114,7 @@ describe('Match rules', () => {
       });
     }
 
+    // first player to reach 6 or more with more than 2 game diff is a set winner
     const test3 = [[6, 0], [6, 1], [6, 2], [6, 3], [6, 4], [7, 5]]
     for (let t = 0; t < test3.length; t++) {
       const values = test3[t];
@@ -132,6 +136,7 @@ describe('Match rules', () => {
       });
     }
 
+    // equal points but 2 more for first player to win, so minimum 4 game required other player to have 6 or more for fist player
     const test4 = [4, 5];
     for (let t = 0; t < test4.length; t++) {
       const values = test4[t];
@@ -158,6 +163,7 @@ describe('Match rules', () => {
       });
     }
 
+    // tie-break is one extra game when the score is 6-6 and the winner is a set winner
     for (let t = 0; t <= 5; t++) {
       test(`WHEN score is 6-6 and player ${otherPlayer} win ${t} games first and after that player ${player} win 7 games THEN playr ${player} is winner of the tie-break`, () => {
         for(let s = 0; s < 6; s++) {
@@ -182,6 +188,7 @@ describe('Match rules', () => {
     }
   }
 
+  // tie-break starts when set score is 6-6
   test('WHEN players win equal 6 games THEN tie-break 0-0', () => {
     for(let i = 0; i < 6; i++) {
       match.pointWonBy(players[0]);
@@ -195,6 +202,6 @@ describe('Match rules', () => {
       match.pointWonBy(players[1]);
     }
 
-    expect(match.score()).toBe("6-6, 0-0");
+    expect(match.score()).toBe("6-6");
   });
 });

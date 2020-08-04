@@ -10,6 +10,12 @@ describe('Match rules', () => {
     match = new Match(p1, p2);
   });
 
+  test(`WHEN wrong player name THEN should throw error`, () => {
+    expect(() => {
+      match.pointWonBy('some random name');
+    }).toThrow('Player Not Found');
+  });
+  
   test('WHEN question test THEN given answers', () => {
     match.pointWonBy(p1);
     match.pointWonBy(p2);

@@ -47,8 +47,19 @@ follow the command line messages by oppening chrome and attaching the debugger.
 
 # Contributing
 The original purpose of this repository is to pass the answer of this coding challenge back to Dius.
-But I want to us this opportunity to ask all of you to review and suggest better way(perfomance and quality) to implement this logic.
-I tried to implement everything in less than 2 hours(in cluding besic setup of repo, no boilerplate used) so there are many ways to improve this code, you are welcome to help me on this :wink:
+But I want to use this opportunity to ask all of you to review and suggest better way(perfomance and quality) to implement this logic.
+I tried to implement everything in less than 2 hours(including besic setup of repo, no boilerplate used) so there are many ways to improve this code, you are welcome to help me on this :wink:
 to do that please
 * create an issue in github in this repo https://github.com/mahmood-sajjadi/dius_tennis/issues
 * or fork this project and do the changes.
+
+# What I like to do later
+* improving build
+* adding husky hooks
+* add more eslit rules or maybe prettier
+* adding some example project which using this library
+* adding more inline-comments and maybe tsdoc to auto generate documentation
+* adding logics to handle wrong inputs(it was not expected as part of coding challenge) like stop the set after first win
+* adding logic to handle multipple sets
+* refactoring code to use .env files or config files for hardcoded values in the code(7 wins for tie-break, 4 wins for normal games, etc.)
+* refactoring code to have more complex logic for tennis games based on wikipedia

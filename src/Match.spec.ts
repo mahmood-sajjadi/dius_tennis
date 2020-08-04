@@ -41,6 +41,17 @@ describe('Match rules', () => {
     expect(match.score()).toBe("1-0");
   });
 
+  test('WHEN 6 win in a row for a player THEN it should be counted as one game scrore and 2 points for next game', () => {
+    match.pointWonBy(p1);
+    match.pointWonBy(p1);
+    match.pointWonBy(p1);
+    match.pointWonBy(p1);// winning of first game
+    match.pointWonBy(p1);// 15 points
+    match.pointWonBy(p1);// 30 points
+
+    expect(match.score()).toBe("1-0, 30-0");
+  });
+
   test('WHEN each get equal points and grater than 3 points THEN deuce', () => {
     match.pointWonBy(p1);
     match.pointWonBy(p2);
